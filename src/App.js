@@ -67,7 +67,7 @@ function App() {
           ? <button className="button" onClick={()=>{setState(10)}}>git merge</button>
           : state === 10
           ? <button className="button" onClick={()=>{setState(11)}}>git push</button>
-          :<></>}
+          :<div id="placeholder"></div>}
 
       </nav>
 
@@ -75,7 +75,7 @@ function App() {
       <header className="App-header">
 
 
-        <div className="repo" id="YokoRepository">Yoko's repository<br></br>on GitHub<br></br>
+        <div className="repo" id="YokoRepository">Yoko's repository<br></br>on <strong>GitHub</strong><br></br>
           {state < 6
           ? <img src="biggerears.png" className="biggerears" alt="biggerears" /> 
           : state === 6
@@ -92,7 +92,7 @@ function App() {
         </div>
         
       <div className="repo" id="BeckyRepository">
-        Becky's repository<br></br>on GitHub<br></br>
+        Becky's repository<br></br>on<strong> GitHub</strong><br></br>
           {
             state >= 1 && state < 5
             ? <img src="biggerears.png" className="biggerears" alt="biggerears" />
@@ -107,7 +107,7 @@ function App() {
 
 
       <div className="repo" id="BeckyRepositoryOnPC">
-        Becky's repository<br></br> on PC<br></br>
+        Becky's repository<br></br> on <strong>PC</strong><br></br>
         {state === 2
         ?   <img src="biggerears.png" className="biggerears" alt="biggerears" />
         :state === 3
