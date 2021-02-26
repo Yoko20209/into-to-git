@@ -1,10 +1,10 @@
-// import logo from './head';
 import './App.css';
 import {useState, useEffect} from "react";
 
 function App() {
   const [state, setState] = useState(0);
   const [pullUpstream, setPullUpstream] = useState(false);
+  const [buttonDisabled, setButtonDisabled] = useState(true);
 
   //0 
   //fork 1
@@ -15,15 +15,30 @@ function App() {
   //pull request 6
   //merge 7
   //Yoko added more features 8
-  //fetch 9 || pull 10
+  //add remote upstream => fetch 9 || pull 10
   //merge 10
   //push 11
 
   // useEffect(()=>{console.log(state)},[state])
 
+  function undoOneStep(){
+    if(state === 8 && !buttonDisabled){
+      return setButtonDisabled(true);
+    }
+    if (pullUpstream){
+      setPullUpstream(false);
+      return setState(8);
+    } 
+    if (state > 0) setState(state - 1);
+  }
+
   function addFeature(){
     if(state >= 4) return;
     setState(state + 1);
+  }
+
+  function toggleButton(){
+    setButtonDisabled(!buttonDisabled);
   }
 
   return (
@@ -32,13 +47,7 @@ function App() {
         <div id="fixed">
           <button className="button" onClick={()=>{setState(0)}}>Restart</button>
 
-          <button className="button" onClick={()=>{
-            if (pullUpstream){
-              setPullUpstream(false);
-              return setState(8);
-            } 
-            if (state > 0) setState(state - 1);
-          }}>Undo one step</button>
+          <button className="button" onClick={undoOneStep}>Undo one step</button>
 
       </div>
         {state === 0
@@ -57,11 +66,12 @@ function App() {
           ? <button className="button" onClick={()=>{setState(8)}}>Yoko added more features</button>
           : state === 8
           ?<>
-          <button className="button" onClick={()=>{setState(9)}}>git fetch</button>
-          <button className="button" onClick={()=>{
+          <button className="button" disabled={buttonDisabled} onClick={()=>{setState(9)}}>git fetch</button>
+          <button className="button" disabled={buttonDisabled} onClick={()=>{
             setPullUpstream(true);
             setState(10)
           }}>git pull upstream</button>
+          <button className="button" disabled={!buttonDisabled} onClick={toggleButton}>git add remote upstream</button>
           </>
           : state === 9
           ? <button className="button" onClick={()=>{setState(10)}}>git merge</button>
