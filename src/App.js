@@ -30,17 +30,17 @@ function App() {
     <div className="App">
       <nav id="nav">
         <div id="fixed">
-        <button className="button" onClick={()=>{setState(0)}}>Restart</button>
+          <button className="button" onClick={()=>{setState(0)}}>Restart</button>
 
-        <button className="button" onClick={()=>{
-          if (pullUpstream){
-            setPullUpstream(false);
-            return setState(8);
-          } 
-          if (state > 0) setState(state - 1);
-        }}>Undo one step</button>
-        </div>
+          <button className="button" onClick={()=>{
+            if (pullUpstream){
+              setPullUpstream(false);
+              return setState(8);
+            } 
+            if (state > 0) setState(state - 1);
+          }}>Undo one step</button>
 
+      </div>
         {state === 0
           ? <button className="button" onClick={()=>{setState(1)}}>Fork</button>
           :state === 1 
@@ -72,7 +72,7 @@ function App() {
       </nav>
 
 
-      <header className="App-header">
+      <article className="App-header">
 
 
         <div className="repo" id="YokoRepository">Yoko's repository<br></br>on <strong>GitHub</strong><br></br>
@@ -91,37 +91,37 @@ function App() {
           
         </div>
         
-      <div className="repo" id="BeckyRepository">
-        Becky's repository<br></br>on<strong> GitHub</strong><br></br>
-          {
-            state >= 1 && state < 5
-            ? <img src="biggerears.png" className="biggerears" alt="biggerears" />
-            : state >= 5 && state < 11
-            ? <img src="whiskers.png" className="whiskers" alt="whiskers" />
-            : state >= 11
-            ? <img src="bodyandribbon.png" className="bodyandribbon" alt="bodyandribbon" />
-            :<></>
-          }
-      </div>
-      
+        <div className="repo" id="BeckyRepository">
+          Becky's repository<br></br>on<strong> GitHub</strong><br></br>
+            {
+              state >= 1 && state < 5
+              ? <img src="biggerears.png" className="biggerears" alt="biggerears" />
+              : state >= 5 && state < 11
+              ? <img src="whiskers.png" className="whiskers" alt="whiskers" />
+              : state >= 11
+              ? <img src="bodyandribbon.png" className="bodyandribbon" alt="bodyandribbon" />
+              :<></>
+            }
+        </div>
+        
 
 
-      <div className="repo" id="BeckyRepositoryOnPC">
-        Becky's repository<br></br> on <strong>PC</strong><br></br>
-        {state === 2
-        ?   <img src="biggerears.png" className="biggerears" alt="biggerears" />
-        :state === 3
-          ?  <img src="ribbon.png" className="ribbon" alt="ribbon" />
-          : state >= 4 && state < 9
-          ?<img src="whiskers.png" className="whiskers" alt="whiskers" />
-          : state === 9
-          ? <><img src="whiskers.png" className="whiskers" alt="whiskers" /><br></br><br></br><img src="bodyandribbon.png" className="bodyandribbon" alt="bodyandribbon" /></>
-          : state >= 10 
-          ?<img src="bodyandribbon.png" className="bodyandribbon" alt="bodyandribbon" />
-          :<></>}
-      </div>
-
-      </header>
+        <div className="repo" id="BeckyRepositoryOnPC">
+          Becky's repository<br></br> on <strong>PC</strong><br></br>
+          {state === 2
+          ?   <img src="biggerears.png" className="biggerears" alt="biggerears" />
+          :state === 3
+            ?  <img src="ribbon.png" className="ribbon" alt="ribbon" />
+            : state >= 4 && state < 9
+            ?<img src="whiskers.png" className="whiskers" alt="whiskers" />
+            : state === 9
+            ? <><img src="whiskers.png" className="whiskers" alt="whiskers" /><br></br><br></br><img src="bodyandribbon.png" className="bodyandribbon" alt="bodyandribbon" /></>
+            : state >= 10 
+            ?<img src="bodyandribbon.png" className="bodyandribbon" alt="bodyandribbon" />
+            :<></>}
+        </div>
+      </article>
+      <a href="https://github.com/Yoko20209/intro-to-git.git" id="github_link">Link to GitHub repsitory of this page</a>
     </div>
   );
 }
